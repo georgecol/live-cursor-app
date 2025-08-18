@@ -15,6 +15,20 @@ const renderCursors = (users, myUsername) => { // Take two parameters, users and
 
 }
 
+
+//Used to create avatar stack.
+const renderUserList = user => {
+    return (
+        <ul>
+            {Object.keys(user).map(uuid => {
+                return (
+                    <li key={uuid}>{JSON.stringify(user[uuid])}</li>
+                )
+            })}
+        </ul>
+    )
+}
+
 export function Home({ username }) {
 
     const WS_URL = `ws://localhost:8000`; // WebSocket URL with username as query parameter
@@ -26,7 +40,7 @@ export function Home({ username }) {
 
 
 
-    const THROTTLE = 30;  //Throttle time in milliseconds
+    const THROTTLE = 50;  //Throttle time in milliseconds
 
     //Dont call this function any more than every 50 milliseconds
     const sendJsonMessageThrottled = useRef(throttle(sendJsonMessage, THROTTLE));
@@ -53,6 +67,7 @@ export function Home({ username }) {
         return (
             <>
                 {renderCursors(lastJsonMessage,username)}
+                {renderUserList(lastJsonMessage)}
             </>
         )
     }
