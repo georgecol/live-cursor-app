@@ -27,10 +27,10 @@ const broadcastUsers = () => {
 //Message = state
 const handleMessage = (bytes, uuid) => {
 //Copy object, and replace the state of the user with the new state
-    const message = JSON.parse(bytes = bytes.toString()); // Convert bytes to string // Get bytes from the server
+    const message = JSON.parse(bytes.toString()); // Convert bytes to string // Get bytes from the server
     const user = users[uuid]; // Get the user object using the UUID
     user.state = message; // Update the user's state with the new message , can do that here because only have one message type for now
-    console.log(`Received message from ${user}:`, message); // Log the received message
+    console.log(`Received message from ${user.username}:`, message); // Log the received message
 
     broadcastUsers();
 
