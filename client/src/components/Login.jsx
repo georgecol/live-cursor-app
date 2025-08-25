@@ -9,7 +9,7 @@ export function Login({ onSubmit }) {
             <h1>Welcome</h1>
             <p>What should people call you?</p>
             <form onSubmit={(e) => {
-                e.preventDefault(); // Prevent the default form submission behavior
+                e.preventDefault(); // Prevent the default form submission behavior // Dont want to reload the page
                 onSubmit(username); // Call the onSubmit function passed as a prop with the username
             }}
             >
